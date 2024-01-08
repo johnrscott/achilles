@@ -31,8 +31,25 @@ sudo apt-get install -y ld64 cctools-strip
 
 I also had the following warning: `ld: warning: directory not found for option '-L/home/jrs/opt/lib64/'`, which I think is due to how my library paths are set up. I created that directory to remove the warning.
 
+I started running `make all` in the `src/PongoOS` directory to debug the build. The first error I get is `ld: could not process llvm bitcode object file, because /usr/bin/../lib/llvm/libLTO.so could not be loaded file '/tmp/modload-a64219.o' for architecture arm64`. Might give [this script](https://gist.github.com/matteyeux/8f286b32334a62d3f65018e5a9785caf) a go:
 
+```bash
+curl -L https://github.com/sbingner/llvm-project/releases/download/v10.0.0-2/linux-ios-arm64e-clang-toolchain.tar.lzma -o /tmp/linux-ios-arm64e-clang-toolchain.tar.lzma
+sudo tar Jxvf /tmp/linux-ios-arm64e-clang-toolchain.tar.lzma -C /opt/
+git clone --depth 1 https://github.com/theos/sdks.git /tmp/sdks
+sudo mv /tmp/sdks /usr/share/sdks
 
+# Now change to the PongoOS directory
+sudo cp scripts/arm64-apple-ios12.0.0-clang /usr/local/bin/
+
+# Before running the next line, add /opt/ios-arm64e-clang-toolchain/bin to
+# your path
+
+# The moment of truth
+EMBEDDED_CC='clang-10' EMBEDDED_AR='/opt/ios-arm64e-clang-toolchain/bin/llvm-ar' EMBEDDED_RANLIB='/opt/ios-arm64e-clang-toolchain/bin/llvm-ranlib' make
+```
+
+That failed with the same error (this time `/tmp/modload_macho-06bb6a.o`).
 
 # Original README...
 
