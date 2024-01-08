@@ -4,6 +4,36 @@
 
 This repository looks like a well-documented easy way to get started for someone with no knowledge of how checkm8 works.
 
+Tasks:
+
+- [ ] Make it compile on Linux
+- [ ] See if it "just works"
+- [ ] If not, learn something about how it works
+
+# Linux Compilation Notes
+
+This section describes the steps required to compile on Linux.
+
+## PongoOS compilation
+
+If you clone the git repository with recursively cloning submodules, you can pull the submodules in by running `git submodule update --init --recursive`.
+
+Before running `make`, check that the `src/PongoOS` directory is present.
+
+As described in the [PongoOS repository](https://github.com/checkra1n/PongoOS), install the following prerequisites for compiling on Ubuntu:
+
+```bash
+echo 'deb https://assets.checkra.in/debian /' | sudo tee /etc/apt/sources.list.d/checkra1n.list
+sudo apt-key adv --fetch-keys https://assets.checkra.in/debian/archive.key
+sudo apt-get update
+sudo apt-get install -y ld64 cctools-strip
+```
+
+I also had the following warning: `ld: warning: directory not found for option '-L/home/jrs/opt/lib64/'`, which I think is due to how my library paths are set up. I created that directory to remove the warning.
+
+
+
+
 # Original README...
 
 Exploiting the Achilles Heel of the SecureROM.
