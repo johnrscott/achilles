@@ -1,5 +1,11 @@
 # Achilles
 
+**Why this fork?** Because I have come into possession of an iPad Mini 2 that I want to use for something other than as a digital photo frame...
+
+This repository looks like a well-documented easy way to get started for someone with no knowledge of how checkm8 works.
+
+# Original README...
+
 Exploiting the Achilles Heel of the SecureROM.
 
 [![Time spent on Achilles](https://wakatime.com/badge/user/61592169-b9cf-4af8-b6fa-8ac7d4369b01/project/c122878a-9ce8-40b1-a337-e53a7ef5f337.svg)](https://wakatime.com/badge/user/61592169-b9cf-4af8-b6fa-8ac7d4369b01/project/c122878a-9ce8-40b1-a337-e53a7ef5f337)
